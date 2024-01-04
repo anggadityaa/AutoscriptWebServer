@@ -22,17 +22,8 @@ echo " "
 apt update
 apt install expect -y
 apt upgrade -y
+
 lampp () {
-echo " Memulai Install LAMPP"
-echo " "
-read -p "Please enter the desired MySQL root password: " -s MYSQL_ROOT_PASS
-echo " "
-echo "Installing Apache"
-apt-get install apache2 -y >> lampp-install.log
-
-}
-
-lamp () {
 echo "Menginstall LAMP stack"
 echo " "
 read -p "Please enter the desired MySQL root password: " -s MYSQL_ROOT_PASS
