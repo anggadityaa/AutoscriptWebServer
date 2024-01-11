@@ -2,7 +2,7 @@
 Ini adalah script auto install untuk web server
 
 
-CARA MENJALANKAN SCRIPT
+## CARA MENJALANKAN SCRIPT
 
 ```sh
 git clone https://github.com/anggadityaa/AutoscriptWebServer.git
