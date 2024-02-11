@@ -1,6 +1,8 @@
 # AutoscriptWebServer
 Ini adalah script auto install untuk web server
 
+![image](https://github.com/anggadityaa/AutoscriptWebServer/assets/90344608/6af647be-ae64-4649-9302-6f014c4b5b9d)
+
 
 ## CARA MENJALANKAN SCRIPT
 
@@ -20,4 +22,3 @@ sudo su
 ./install.sh
 ```
 
-![image](https://github.com/anggadityaa/AutoscriptWebServer/assets/90344608/6af647be-ae64-4649-9302-6f014c4b5b9d)
