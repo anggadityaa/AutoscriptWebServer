@@ -22,7 +22,7 @@ echo " "
 apt update
 apt install expect -y
 apt upgrade -y
-apt install aptitude
+apt install aptitude -y
 
 lampp () {
 echo "Menginstall LAMP stack"
@@ -105,12 +105,12 @@ echo " "
 read -p "Please enter the desired MySQL root password: " -s MYSQL_ROOT_PASS
 echo " "
 echo "Installing NGINX"
-apt-get install nginx -y >> lemp-install.log
+aptitude install nginx -y >> lemp-install.log
 
 echo " "
 echo "Installing MariaDB (MySQL)"
-apt-get install mariadb-server -y >> lemp-install.log
-apt-get install mariadb-client -y >> lemp-install.log
+aptitude install mariadb-server -y >> lemp-install.log
+aptitude install mariadb-client -y >> lemp-install.log
 [ ! -e /usr/bin/expect ]
 SECURE_MYSQL=$(expect -c "
 set timeout 10
@@ -136,7 +136,7 @@ expect eof
 
 echo " "
 echo "Installing PHP"
-apt-get install -y php php-mysql php-redis php-zip -y >> lemp-install.log
+aptitude install -y php php-mysql php-redis php-zip -y >> lemp-install.log
 
 echo " "
 echo "Installing PhpMyAdmin"
@@ -151,7 +151,7 @@ then
   echo "phpmyadmin phpmyadmin/mysql/app-pass password $MYSQL_ROOT_PASS" |debconf-set-selections
   echo "phpmyadmin phpmyadmin/app-password-confirm password $MYSQL_ROOT_PASS" | debconf-set-selections
 
-  apt-get install phpmyadmin -y >> lemp-install.log
+  aptitude install phpmyadmin -y >> lemp-install.log
  fi
 sudo service nginx restart >> lemp-install.log
 
@@ -175,7 +175,7 @@ echo "==================================================="
 
 apache2 () {
 echo "Memulai Install Apache2"
-apt-get install apache2 -y >> apache2-install.log
+aptitude install apache2 -y >> apache2-install.log
 echo " "
 echo " "
 echo "==================================================="
@@ -186,7 +186,7 @@ echo "==================================================="
 
 nginx () {
 echo " Memulai Install NGINX"
-apt-get install -y nginx >> nginx-install.log
+aptitude install -y nginx >> nginx-install.log
 echo " "
 echo " "
 echo "==================================================="
@@ -199,8 +199,8 @@ mysql () {
 echo "Memualai Install MariaDB (MySQL)"
 echo " "
 read -p "Silahkan masukan password root untuk mysql: " -s MYSQL_ROOT_PASS
-apt-get install -y mariadb-server >> mysql-install.log
-apt-get install -y mariadb-client >> mysql-install.log
+aptitude install -y mariadb-server >> mysql-install.log
+aptitude install -y mariadb-client >> mysql-install.log
 [ ! -e /usr/bin/expect ]
 SECURE_MYSQL=$(expect -c "
 set timeout 10
@@ -244,7 +244,7 @@ then
   echo "phpmyadmin phpmyadmin/mysql/app-pass password $PHPMYADMIN_MYSQL_ROOT_PASS" |debconf-set-selections
   echo "phpmyadmin phpmyadmin/app-password-confirm password $PHPMYADMIN_MYSQL_ROOT_PASS" | debconf-set-selections
 
-  apt-get install -y phpmyadmin >> phpmyadmin-install.log
+  aptitude install -y phpmyadmin >> phpmyadmin-install.log
  fi
 echo " "
 echo " "
@@ -255,7 +255,7 @@ echo "==================================================="
 
 ssl () {
 echo "Running SSL Script"
-apt-get install -y certbot pytho3-certbot-apache python3-certbot-nginx >> ssl-install.log
+aptitude install -y certbot pytho3-certbot-apache python3-certbot-nginx >> ssl-install.log
 echo " "
 read -p "Silahkan masukan domain kamu: " SYS_DOMAIN
 SERVER_IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
