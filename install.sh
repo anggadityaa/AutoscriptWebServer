@@ -22,6 +22,7 @@ echo " "
 apt update
 apt install expect -y
 apt upgrade -y
+apt install aptitude
 
 lampp () {
 echo "Menginstall LAMP stack"
@@ -29,11 +30,11 @@ echo " "
 read -p "Please enter the desired MySQL root password: " -s MYSQL_ROOT_PASS
 echo " "
 echo "Menginstall Apache"
-apt install -y apache2 >> lamp-install.log
+aptitude install -y apache2 >> lamp-install.log
 
 echo " "
 echo "Menginstall MariaDB (MySQL)"
-apt install -y mariadb-server mariadb-client >> lamp-install.log
+aptitude install -y mariadb-server mariadb-client >> lamp-install.log
 [ ! -e /usr/bin/expect ]
 SECURE_MYSQL=$(expect -c "
 set timeout 10
@@ -59,7 +60,7 @@ expect eof
 
 echo " "
 echo "Menginstall PHP"
-apt install -y php libapache2-mod-php php-mysql php-redis php-zip >> lamp-install.log
+aptitude install -y php libapache2-mod-php php-mysql php-redis php-zip >> lamp-install.log
 service apache2 restart >> lamp-install.log
 
 echo " "
@@ -75,7 +76,7 @@ then
   echo "phpmyadmin phpmyadmin/mysql/app-pass password $MYSQL_ROOT_PASS" |debconf-set-selections
   echo "phpmyadmin phpmyadmin/app-password-confirm password $MYSQL_ROOT_PASS" | debconf-set-selections
 
-  apt install -y phpmyadmin >> lamp-install.log
+  aptitude install -y phpmyadmin >> lamp-install.log
  fi
 sudo ln -s /etc/phpmyadmin/apache.conf /etc/apache2/conf-available/phpmyadmin.conf >> lamp-install.log
 sudo a2enconf phpmyadmin.conf >> lamp-install.log
